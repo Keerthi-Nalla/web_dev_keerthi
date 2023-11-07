@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('first_page.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .greetings {
+            font-family: "Century Gothic";
+            font-size: 40px;
+
+            color:black;
+        }
+
+        .signup-button {
+            background-color:green;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+font-size:18px;
+            margin-right: 10px; /* Add margin to separate buttons */
+        }
+
+        .login-button {
+            background-color: #f39c12; /* Choose a different color for the login button */
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+font-size:18px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function redirectToRegister() {
+            window.location.href = "index.php";
+        }
+
+        function redirectToLogin() {
+            window.location.href = "login.php";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text">WELCOME TO THE LEARNING SPACE</h1>
+        <div>
+            <button class="signup-button" onclick="redirectToRegister()">Sign up</button>
+            <button class="login-button" onclick="redirectToLogin()">Login</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -5,13 +5,18 @@
 <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:darkcyan;
+            
             text-align: left;
+            background-image:url('login1.avif');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            
         }
         .container {
             max-width: 300px;
             margin: 0 auto;
-            background: white;
+            background:white;
             padding: 25px;
             border-radius: 7px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,7 +32,7 @@
             top: 50%;
             width: 35%; 
             height: 10px;
-            background-color: darkcyan;
+            background-color:lightpink;
         }
 
         h2::before {
@@ -51,7 +56,7 @@
             border-radius: 5px;
         }
         input[type="submit"] {
-            background-color: darkcyan;
+            background-color:lightpink;
             color: #fff;
             padding: 10px 10px;
             border: none;
@@ -86,12 +91,12 @@
 
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $entered_username = $_POST["username"];
-        $entered_password = $_POST["password"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
         // Check if the entered credentials are in the allowed list
-        if (array_key_exists($entered_username, $allowed_credentials) &&
-            $allowed_credentials[$entered_username] == $entered_password) {
+        if (array_key_exists($username, $allowed_credentials) &&
+            $allowed_credentials[$username] == $password) {
             $success = "Login Successful!";
         } else {
             $error = "Invalid username or password. Please try again.";
