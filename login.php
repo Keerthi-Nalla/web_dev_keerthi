@@ -78,7 +78,7 @@
 </head>
 
 <body>
-
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php
     // Initialize variables for error and success messages
     $error = "";
@@ -106,7 +106,7 @@
 
 <div class="container">
 <center><h2>Login</h2></center>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
 

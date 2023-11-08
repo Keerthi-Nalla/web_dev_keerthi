@@ -105,11 +105,16 @@ input[type="checkbox"] {
 
 
     </style>
+    <script>
+        function redirectToLogin() {
+            window.location.href = "login.php";
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2 align="center">Sign Up</h2>
-
+        <form action="javascript:void(0);" onsubmit="redirectToLogin()">
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $name = $_POST['name'];
@@ -124,8 +129,8 @@ input[type="checkbox"] {
             echo 'successful registration';
                 // Credentials match, you can proceed with registration
                 // Redirect to the login page after registration
-                header("Location:login.php?username=$username&password=$password");
-                exit; // This is important to stop further script execution
+                //header("Location:login.php?username=$username&password=$password");
+               // exit; // This is important to stop further script execution
             } 
            else {
                 // Passwords don't match, display an error message
@@ -134,7 +139,7 @@ input[type="checkbox"] {
         }
         ?>
 
-<form action="login.php" method="POST" >
+
     <div>
 		<label for="name">Name</label>
 		<input type="text" id="name" name="name" placeholder="Enter your full name" required>
