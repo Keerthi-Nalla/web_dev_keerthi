@@ -119,6 +119,7 @@ input[type="checkbox"] {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $name = $_POST['name'];
             $username = $_POST['username'];
+        
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirmPassword'];
             $email = $_POST['email'];
