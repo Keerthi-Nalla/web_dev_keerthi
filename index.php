@@ -102,8 +102,6 @@ input[type="checkbox"] {
     border-radius: 3px;
     width: auto;
 }
-
-
     </style>
     <script>
         function redirectToLogin() {
