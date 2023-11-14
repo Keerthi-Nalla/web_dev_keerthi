@@ -90,15 +90,16 @@
     ];
 
     // Check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
+     {
         $username = $_POST["username"];
         $password = $_POST["password"];
-
         // Check if the entered credentials are in the allowed list
         if (array_key_exists($username, $allowed_credentials) &&
             $allowed_credentials[$username] == $password) {
             $success = "Login Successful!";
-        } else {
+        } else 
+        {
             $error = "Invalid username or password. Please try again.";
         }
     }

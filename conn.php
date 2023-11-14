@@ -11,16 +11,18 @@ $phone = $_POST['phone'];
 $bdate = $_POST['bdate']; 
 //Database connection
 $conn = new mysqli('localhost', 'root',' ','demo');
-if($conn->connect_error) {
-die('Connection Failed : '.$conn->connect_error);
-}else
+if($conn->connect_error) 
 {
-$stmt = $conn->prepare("insert into test (name, username, password,email,confirmPassword,phone,bdate)values(?, ?, ?, ?, ?, ?,?)");
-$stmt->bind_param("sssssis", $name, $username, $password, $confirmPassword, $email, $phone,$DOB);
-$stmt->execute();
-echo "registration Successfully...";
-$stmt->close();
-$conn->close();
+    die('Connection Failed : '.$conn->connect_error);
+}
+else
+{
+    $stmt = $conn->prepare("insert into test (name, username, password,email,confirmPassword,phone,bdate)values(?, ?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("sssssis", $name, $username, $password, $confirmPassword, $email, $phone,$DOB);
+    $stmt->execute();
+    echo "registration Successfully...";
+    $stmt->close();
+    $conn->close();
 }
 }
 ?>

@@ -54,13 +54,9 @@
             color: #333;
             font-weight: 900px;
         }
-
         .password-container input[type="password"] {
             width: 48%; /* Set the width for each password field */
         }
-
-        
-
         input[type="name"],input[type="username"],input[type="confirmPassword"],input[type="phone"],input[type="bdate"]
         input[type="password"],
         input[type="email"] {
@@ -94,7 +90,6 @@
         input[type="submit"]:hover {
             background-color: gray;
         }
-
 input[type="checkbox"] {
     margin: 5px 0;
     font-size: 5px;
@@ -112,9 +107,10 @@ input[type="checkbox"] {
 <body>
     <div class="container">
         <h2 align="center">Sign Up</h2>
-        <form action="javascript:void(0);"  method="post" >
+        <form action="javascript:void(0);" method="post">
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             $name = $_POST['name'];
             $username = $_POST['username'];
         
@@ -124,21 +120,21 @@ input[type="checkbox"] {
             $phone = $_POST['phone'];
             $bdate = $_POST['bdate'];
 
-           if ($password === $confirmPassword) {
+           if ($password === $confirmPassword) 
+           {
             echo 'successful registration';
                 // Credentials match, you can proceed with registration
                 // Redirect to the login page after registration
                 //header("Location:login.php?username=$username&password=$password");
                // exit; // This is important to stop further script execution
             } 
-           else {
+           else
+            {
                 // Passwords don't match, display an error message
                 echo '<div style="color: red;">Passwords do not match. Please try again.</div>';
             }
         }
         ?>
-
-
     <div>
 		<label for="name">Name</label>
 		<input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -152,7 +148,6 @@ input[type="checkbox"] {
                 <input type="password" id="pass" name="password" maxlength="8" placeholder="Enter your password" required>
     </div>
     <div>
-
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" maxlength="8" placeholder="Confirm your password" required>
     </div>
@@ -160,29 +155,23 @@ input[type="checkbox"] {
 		<label for="email">Email address</label>
 		<input type="text" id="email" name="email" placeholder="sfdh@gmail.com" required>
     </div>
-
     <div>
 		<label for="phone">Phone number</label>
 		<input type="tel" id="phone" name="phone" placeholder="1234567890" required>
     </div>
-
     <div>
 		<label for="bdate">Date of birth</label>
 		<input type="date" id="bdate" name="bdate" >
     </div>
-
     <div>
     <label for="terms-and-conditions">
         <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" /> I accept the terms and conditions</a>
       </label>
     </div>
-
     <div>
 		<center><input type="submit" value="Register" onclick="redirectToLogin()"></center>
-	
     </div>
-</form>
-
+     </form>
     </div>
 </body>
 </html>
