@@ -19,11 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn = new mysqli ($servername, $db_username, $db_password, $database);
 
     // Check the connection
-    if ($conn->connect_error) {
+    if ($conn->connect_error) 
+    {
         die("Connection failed: " . $conn->connect_error);
     }
-
-
     // Insert user data into the database
     // Hash the password before storing it in the database
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -32,11 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //$sql = "INSERT INTO test (name,username, password,email,confirmPassword,phone,bdate) VALUES ('$name','$username', '$password','$email','$confirmPassword','$phone','$bdate')";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE) 
+    {
         
         header("Location: login.php");
         exit(); 
-    } else {
+    } else
+     {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 

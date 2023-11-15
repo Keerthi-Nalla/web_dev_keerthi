@@ -84,7 +84,8 @@ $error = "";
 $success = "";
 
 // Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
     $entered_username = $_POST["username"];
     $entered_password = $_POST["password"];
 
@@ -93,15 +94,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db_username = "root";
     $db_password = "";
     $database = "demo";
-
-   
     $conn = new mysqli($servername, $db_username, $db_password, $database);
 
-    if ($conn->connect_error) {
+    if ($conn->connect_error)
+     {
         die("Connection failed: " . $conn->connect_error);
     }
-
-
     $stmt = $conn->prepare("SELECT password FROM test WHERE username = ?");
     $stmt->bind_param("s", $entered_username);
     $stmt->execute();
@@ -112,7 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stored_password && password_verify($entered_password, $stored_password)) {
         $success = "Login Successful!";
-    } else {
+    }
+     else
+     {
         $error = "Invalid username or password. Please try again.";
     }
     $conn->close();

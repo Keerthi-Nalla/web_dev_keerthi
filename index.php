@@ -86,10 +86,12 @@
         
         }
 
-        input[type="submit"]:hover {
+        input[type="submit"]:hover 
+        {
             background-color: gray;
         }
-input[type="checkbox"] {
+input[type="checkbox"] 
+{
     margin: 5px 0;
     font-size: 5px;
     border: 1px solid gray;
@@ -98,7 +100,8 @@ input[type="checkbox"] {
 }
     </style>
     <script>
-        function redirectToLogin() {
+        function redirectToLogin() 
+        {
             console.log("Redirecting to login.php");
             window.location.href = "login.php";
         }
