@@ -78,36 +78,49 @@
 </head>
 
 <body>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <?php
-    // Initialize variables for error and success messages
-    $error = "";
-    $success = "";
+// Initialize variables for error and success messages
+$error = "";
+$success = "";
 
-    // Define an array of allowed credentials
-    $allowed_credentials = [
-        'registered_username' => 'registered_password'
-    ];
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $entered_username = $_POST["username"];
+    $entered_password = $_POST["password"];
 
-    // Check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-     {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        // Check if the entered credentials are in the allowed list
-        if (array_key_exists($username, $allowed_credentials) &&
-            $allowed_credentials[$username] == $password) {
-            $success = "Login Successful!";
-        } else 
-        {
-            $error = "Invalid username or password. Please try again.";
-        }
+    // Your MySQL database credentials
+    $servername = "localhost";
+    $db_username = "root";
+    $db_password = "";
+    $database = "demo";
+
+   
+    $conn = new mysqli($servername, $db_username, $db_password, $database);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-?>
 
+
+    $stmt = $conn->prepare("SELECT password FROM test WHERE username = ?");
+    $stmt->bind_param("s", $entered_username);
+    $stmt->execute();
+    $stmt->bind_result($stored_password);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    if ($stored_password && password_verify($entered_password, $stored_password)) {
+        $success = "Login Successful!";
+    } else {
+        $error = "Invalid username or password. Please try again.";
+    }
+    $conn->close();
+}
+?>
 <div class="container">
 <center><h2>Login</h2></center>
-
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
 

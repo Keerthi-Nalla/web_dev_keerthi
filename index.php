@@ -57,9 +57,8 @@
         .password-container input[type="password"] {
             width: 48%; /* Set the width for each password field */
         }
-        input[type="name"],input[type="username"],input[type="confirmPassword"],input[type="phone"],input[type="bdate"]
-        input[type="password"],
-        input[type="email"] {
+        input[type="name"],input[type="username"],input[type="confirmPassword"],input[type="phone"],input[type="bdate"]input[type="password"],input[type="email"] 
+        {
             width: 100px;
             margin: 5px 0;
             font-size:30px;
@@ -100,6 +99,7 @@ input[type="checkbox"] {
     </style>
     <script>
         function redirectToLogin() {
+            console.log("Redirecting to login.php");
             window.location.href = "login.php";
         }
     </script>
@@ -107,17 +107,16 @@ input[type="checkbox"] {
 <body>
     <div class="container">
         <h2 align="center">Sign Up</h2>
-        <form action="javascript:void(0);" method="post">
+        <form action="conn.php"  onsubmit="redirectToLogin()" method="post">  
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") 
         {
             $name = $_POST['name'];
             $username = $_POST['username'];
-        
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirmPassword'];
             $email = $_POST['email'];
-            $phone = $_POST['phone'];
+            $Phone = $_POST['Phone'];
             $bdate = $_POST['bdate'];
 
            if ($password === $confirmPassword) 
@@ -157,7 +156,7 @@ input[type="checkbox"] {
     </div>
     <div>
 		<label for="phone">Phone number</label>
-		<input type="tel" id="phone" name="phone" placeholder="1234567890" required>
+		<input type="tel" id="Phone" name="Phone" placeholder="1234567890" required>
     </div>
     <div>
 		<label for="bdate">Date of birth</label>
